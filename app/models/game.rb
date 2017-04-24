@@ -1,9 +1,10 @@
 class Game < ApplicationRecord
   belongs_to :user
-
+  has_many :comments
+  
   validates :name, presence: true, length: { minimum: 4}
   validates :address, presence: true
   validates :review, presence: true, length: {minimum: 10}
 
-  has_many :comments
+
 end

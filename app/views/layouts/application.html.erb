@@ -24,7 +24,7 @@
     <li class="nav-item">
      <%= link_to new_game_path, class:'nav-link' do %>
      <i class="fa fa-plus-circle"></i>
-     New Place
+     New Game
      <% end %>
    </li>
  </ul>
@@ -47,6 +47,13 @@
 </ul>
 </div>
 </nav>
+
+<% if notice.present? %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
 
 
 

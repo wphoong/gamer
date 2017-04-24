@@ -12,7 +12,11 @@ class GamesController < ApplicationController
     def create
       Game.create(game_params)
       current_user.games.create(game_params)
-      redirect_to root_path
+      if @game.valid?
+        redirect_to root_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
 
     def show
@@ -32,8 +36,13 @@ class GamesController < ApplicationController
       if @game.user != current_user
         return render text: 'Not Allowed', status: :forbidden
       end
+
       @game.update_attributes(game_params)
-      redirect_to root_path
+      if @game.valid?
+        redirect_to root_path
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
 
     def destroy

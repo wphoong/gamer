@@ -5,5 +5,5 @@ class Game < ApplicationRecord
   validates :address, presence: true
   validates :review, presence: true, length: {minimum: 10}
 
-
+  has_many :comments
 end

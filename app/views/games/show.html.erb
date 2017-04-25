@@ -1,8 +1,11 @@
 <div class="booyah-box col-10 offset-1">
   <h1><%= @game.name %></h1>
   <p><%= @game.humanized_rating %></p>
+  <% if current_user && current_user == @game.user %>
+
   <%= link_to 'Edit', edit_game_path(@game),class: 'btn btn-info' %>
   <%= link_to 'Destroy', game_path(@game), method: :delete, data: {confirm: ' Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
+  <% end %>
   <p><%= @game.review %></p>
 </div>
 

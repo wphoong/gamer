@@ -10,8 +10,7 @@ class GamesController < ApplicationController
     end
 
     def create
-      Game.create(game_params)
-      current_user.games.create(game_params)
+      @game = current_user.games.create(game_params)
       if @game.valid?
         redirect_to root_path
       else

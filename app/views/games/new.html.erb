@@ -3,7 +3,7 @@
 <h1> Add a Game</h1>
 <%= simple_form_for @game do |f| %>
   <%= f.input :name %>
-  <%= f.input :rating %>
+  <%= f.input :rating, as: :select, collection: Game::RATINGS %>
   <%= f.input :review %>
   <br / >
   <%= f.submit 'Create', class: 'btn btn-primary' %>

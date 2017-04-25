@@ -3,7 +3,7 @@
 <div class="booyah-box col-10 offset-1">
   
   <h1><%= link_to game.name, game_path(game) %> </h1>
-  <p><%= game.rating %> </p>
+  <p><%= game.humanized_rating %> </p>
   <p><%= game.review %></p>
   <% if game.user.present? %>
     <small><%= game.user.email %></small>

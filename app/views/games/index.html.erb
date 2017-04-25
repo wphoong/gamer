@@ -8,5 +8,17 @@
   <% if game.user.present? %>
     <small><%= game.user.email %></small>
   <% end %>
+
+  <% if game.comments.present? %>
+  <div class="col-12 col-sm-6">
+    <blockquote>
+      <% if game.comments.last.humanized_rating.present? %>
+      <b><%= game.comments.last.humanized_rating %></b> -
+      <% end %>
+      <%= game.comments.last.message %>
+      <small><%= game.comments.last.user.email %></small>
+    </blockquote>
+  </div>
+  <% end %>
 </div>
 <% end %>

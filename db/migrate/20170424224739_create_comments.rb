@@ -8,7 +8,7 @@ class CreateComments < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :comments, [:user_id, :game_id]
+    add_index :comments, %i[user_id game_id]
     add_index :comments, :game_id
   end
 end

@@ -1,15 +1,11 @@
 <div class="booyah-box col-10 offset-1 text-center">
   <h1>User Dashboard</h1>
   <br />
-  
-    <h1><%= @user.email %></h1>
-
-    <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
-    <h4><%= @user.comments.count %> Total Comments </h4>
-  
+  <h1><%= @user.email %></h1>
+  <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+  <h4><%= @user.comments.count %> Total Comments </h4>
   <div class="clear"></div>
 </div>
-
 <div class="booyah-box col-10 offset-1">
   <h1 class="text-center">Comments</h1>
   <br />
@@ -27,33 +23,28 @@
     <% end %>
   </div>
 </div>
-
-
 <div class="clear"></div>
   <br /><br />
   <h2 class="text-center">My Games</h2>
   <br /><br />
-  <% @user.games.each do |game| %>
-<div class="booyah-box col-10 offset-1">
-  <h1><%= link_to game.name, game_path(game) %></h1>
-  <i><%= game.humanized_rating %></i><br /><br />
-  <p><%= game.review %></p><br />
-
-  <% if game.user.present? %>
-    <small><%= game.user.email %></small>
-  <% end %>
-
-  <% if game.comments.present? %>
-    <div class="col-12">
-      <blockquote>
-        <% if game.comments.last.humanized_rating.present? %>
-          <b><%= game.comments.last.humanized_rating %></b> -
-        <% end %>
-        <%= game.comments.last.message %>
-        <small><%= game.comments.last.user.email %></small>
-      </blockquote>
-    </div>
-  <% end %>
+<% @user.games.each do |game| %>
+  <div class="booyah-box col-10 offset-1">
+    <h1><%= link_to game.name, game_path(game) %></h1>
+    <i><%= game.humanized_rating %></i><br /><br />
+    <p><%= game.review %></p><br />
+      <% if game.user.present? %>
+        <small><%= game.user.email %></small>
+      <% end %>
+    <% if game.comments.present? %>
+      <div class="col-12">
+        <blockquote>
+          <% if game.comments.last.humanized_rating.present? %>
+            <b><%= game.comments.last.humanized_rating %></b> -
+          <% end %>
+          <%= game.comments.last.message %>
+          <small><%= game.comments.last.user.email %></small>
+        </blockquote>
+      </div>
+    <% end %>
   </div>
 <% end %>
-  
